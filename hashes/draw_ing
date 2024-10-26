@@ -648,7 +648,13 @@ function DrawingLib.createFrame()
 end
 
 task.spawn(function()
-	print("Cloudy Injected!\n.gg/getcloudy")
+	game:GetService("StarterGui"):SetCore("SendNotification",{
+		Title = "Eclipse X",
+		Text = "Eclipse X Injected",
+		Duration = 5
+	})
+	print("Eclipse X Successfully injected")
+	print("For any support please create a ticket in Eclipse discord server")
 	local _game = game:GetService("CoreGui").Parent
 local HttpService = _game:FindService("HttpService")
 
