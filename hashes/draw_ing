@@ -648,10 +648,12 @@ function DrawingLib.createFrame()
 end
 
 task.spawn(function()
-	game:GetService("StarterGui"):SetCore("SendNotification",{
-		Title = "Eclipse X",
-		Text = "Eclipse X Injected",
-		Duration = 5
+	local StarterGui = game:GetService("StarterGui")
+
+	StarterGui:SetCore("SendNotification", {
+		Title = "Eclipse X";
+		Text = "nigger";
+		Duration = 5;
 	})
 	print("Eclipse X Successfully injected")
 	print("For any support please create a ticket in Eclipse discord server")
