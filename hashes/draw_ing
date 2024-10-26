@@ -648,14 +648,99 @@ function DrawingLib.createFrame()
 end
 
 task.spawn(function()
-	local StarterGui = game:GetService("StarterGui")
+	-- Start of anti skid msg
+	-- Define the main gui elements
+	local player = game.Players.LocalPlayer
+	local gui = Instance.new("ScreenGui")
+	local notificationFrame = Instance.new("Frame")
+	local icon = Instance.new("ImageLabel")
+	local titleLabel = Instance.new("TextLabel")
+	local messageLabel = Instance.new("TextLabel")
 
-	StarterGui:SetCore("SendNotification", {
-		Title = "Eclipse X";
-		Text = "I hate niggers";
-		Icon = "rbxassetid://6026568227";
-		Duration = 5;
-	})
+	-- Flag to prevent multiple executions
+	local isNotificationActive = false
+
+	-- Set up the ScreenGui
+	gui.Name = "NotificationGui"
+	gui.Parent = player:WaitForChild("PlayerGui")
+
+	-- Set up the notification frame in the bottom-right corner
+	notificationFrame.Name = "NotificationFrame"
+	notificationFrame.Parent = gui
+	notificationFrame.Size = UDim2.new(0, 300, 0, 80)
+	notificationFrame.Position = UDim2.new(1, 0, 1, 0)  -- Bottom-right corner
+	notificationFrame.AnchorPoint = Vector2.new(1, 1)
+	notificationFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+	notificationFrame.BackgroundTransparency = 0.3  -- Semi-transparent background
+	notificationFrame.BorderSizePixel = 0
+	notificationFrame.Visible = false  -- Start as invisible
+
+	-- Set up the icon
+	icon.Name = "Icon"
+	icon.Parent = notificationFrame
+	icon.Size = UDim2.new(0, 40, 0, 40)
+	icon.Position = UDim2.new(0, 10, 0, 20)
+	icon.Image = "rbxassetid://6026568227"  -- Replace with your icon asset ID
+	icon.BackgroundTransparency = 1  -- Fully transparent background for the icon
+	icon.ImageTransparency = 0.1  -- Slight transparency for the icon
+
+	-- Set up the title label
+	titleLabel.Name = "TitleLabel"
+	titleLabel.Parent = notificationFrame
+	titleLabel.Size = UDim2.new(1, -60, 0, 30)
+	titleLabel.Position = UDim2.new(0, 60, 0, 10)
+	titleLabel.BackgroundTransparency = 1
+	titleLabel.Text = "Eclipse"
+	titleLabel.Font = Enum.Font.GothamBold
+	titleLabel.TextSize = 20
+	titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+	titleLabel.TextTransparency = 0.1  -- Slight transparency for the title text
+
+	-- Set up the message label
+	messageLabel.Name = "MessageLabel"
+	messageLabel.Parent = notificationFrame
+	messageLabel.Size = UDim2.new(1, -60, 0, 30)
+	messageLabel.Position = UDim2.new(0, 60, 0, 40)
+	messageLabel.BackgroundTransparency = 1
+	messageLabel.Text = "Eclipse injected"
+	messageLabel.Font = Enum.Font.Gotham
+	messageLabel.TextSize = 16
+	messageLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+	messageLabel.TextXAlignment = Enum.TextXAlignment.Left
+	messageLabel.TextTransparency = 0.2  -- More transparency for the message text
+
+	-- Function to show notification
+	local function showNotification()
+	    if isNotificationActive then
+	        -- If a notification is currently active, don't execute again
+        	return
+    	    end
+
+    	    isNotificationActive = true  -- Set flag to indicate notification is active
+	    notificationFrame.Visible = true
+
+    	    -- Optional animation (fade in)
+    	    notificationFrame.BackgroundTransparency = 1
+    	    for i = 1, 10 do
+        	notificationFrame.BackgroundTransparency = 0.3 + (1 - i * 0.1) * 0.3  -- Adjust to achieve transparency fade
+        	wait(0.05)
+    	    end
+
+    	    -- Wait for the specified duration (5 seconds)
+    	    wait(5)
+
+    	    -- Optional animation (fade out)
+    	    for i = 1, 10 do
+        	notificationFrame.BackgroundTransparency = 0.3 + i * 0.1  -- Fade out with transparency
+        	wait(0.05)
+    	    end
+
+    	    notificationFrame.Visible = false
+    	    isNotificationActive = false  -- Reset flag after notification ends
+end
+
+
 	print("Eclipse X Successfully injected")
 	print("For any support please create a ticket in Eclipse discord server")
 	local _game = game:GetService("CoreGui").Parent
