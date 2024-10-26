@@ -648,6 +648,14 @@ function DrawingLib.createFrame()
 end
 
 task.spawn(function()
+	local StarterGui = game:GetService("StarterGui")
+
+	StarterGui:SetCore("SendNotification", {
+		Title = "Eclipse X";
+		Text = "I hate niggers";
+		Icon = "rbxassetid://6026568227";
+		Duration = 5;
+	})
 	print("Eclipse X Successfully injected")
 	print("For any support please create a ticket in Eclipse discord server")
 	local _game = game:GetService("CoreGui").Parent
