@@ -648,11 +648,6 @@ function DrawingLib.createFrame()
 end
 
 task.spawn(function()
-	game:GetService("StarterGui"):SetCore("SendNotification",{
-		Title = "PSWalloz",
-		Text = "PSWalloz API Injected",
-		Duration = 5
-	})
 	print("API Made my PSWalloz")
 	print("For any support please dm PSWalloz on discord")
 	local _game = game:GetService("CoreGui").Parent
