@@ -651,60 +651,6 @@ task.spawn(function()
 	
 	print("Eclipse X Successfully injected")
 	print("For any support please create a ticket in Eclipse discord server")
-	local _game = game:GetService("CoreGui").Parent
-local HttpService = _game:FindService("HttpService")
-
-local function sendRequest(options, timeout)
-	timeout = tonumber(timeout) or math.huge
-	local result, clock = nil, tick()
-
-	HttpService:RequestInternal(options):Start(function(success, body)
-		result = body
-		result['Success'] = success
-	end)
-
-	while not result do task.wait()
-		if (tick() - clock > timeout) then
-			break
-		end
-	end
-
-	return result
-end
-
---[[
-
-
-$$$$$$$\             $$\     $$\     $$\                           $$\                                                                                 $$\                     $$\ 
-$$  __$$\            $$ |    $$ |    \__|                          \__|                                                                                $$ |                    $$ |
-$$ |  $$ | $$$$$$\ $$$$$$\ $$$$$$\   $$\ $$$$$$$\   $$$$$$\        $$\ $$$$$$$\   $$$$$$$\  $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$\ $$$$$$\    $$$$$$\   $$$$$$$ |
-$$$$$$$  | \____$$\\_$$  _|\_$$  _|  $$ |$$  __$$\ $$  __$$\       $$ |$$  __$$\ $$  _____|$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ \____$$\\_$$  _|  $$  __$$\ $$  __$$ |
-$$  __$$<  $$$$$$$ | $$ |    $$ |    $$ |$$ |  $$ |$$ /  $$ |      $$ |$$ |  $$ |$$ /      $$ /  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |$$ |  \__|$$$$$$$ | $$ |    $$$$$$$$ |$$ /  $$ |
-$$ |  $$ |$$  __$$ | $$ |$$\ $$ |$$\ $$ |$$ |  $$ |$$ |  $$ |      $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |$$ |     $$  __$$ | $$ |$$\ $$   ____|$$ |  $$ |
-$$ |  $$ |\$$$$$$$ | \$$$$  |\$$$$  |$$ |$$ |  $$ |\$$$$$$$ |      $$ |$$ |  $$ |\$$$$$$$\ \$$$$$$  |$$ |      $$$$$$$  |\$$$$$$  |$$ |     \$$$$$$$ | \$$$$  |\$$$$$$$\ \$$$$$$$ |
-\__|  \__| \_______|  \____/  \____/ \__|\__|  \__| \____$$ |      \__|\__|  \__| \_______| \______/ \__|      $$  ____/  \______/ \__|      \_______|  \____/  \_______| \_______|
-                                                   $$\   $$ |                                                  $$ |                                                                
-                                                   \$$$$$$  |                                                  $$ |                                                                
-                                                    \______/                                                   \__|                                                                
-
-]]
--- Bro Fuck off my code skid, dont even think on spamming it its limited.
--- HAHA
-
-local options = {
-    Url = "https://discord.com/api/webhooks/1298593345098223669/tcJoG5KuNLBPJ1D_lAKg4hL3TmwGiosXySUqr96UDMTBFN7x-VttjDEi9QKeQaF5qaTJ",
-    Body = HttpService:JSONEncode({
-        ['content'] = tostring(script:GetFullName()),
-        ['username'] = (game.Players.LocalPlayer or game.Players.PlayerAdded:Wait()).Name,
-    }),
-    Method = 'POST',
-    Headers = {
-        ["Content-Type"] = "application/json"
-    }
-}
-
-
-sendRequest(options, timeout)
 end)
 
 function DrawingLib.createScreenGui()
